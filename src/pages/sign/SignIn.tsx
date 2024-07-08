@@ -1,9 +1,9 @@
-import Container from '../components/layout/Container';
+import Container from '../../components/layout/Container';
 
 const Login = () => {
   return (
     <Container>
-      login
+      로그인 페이지
     </Container>
   )
 }
