@@ -1,12 +1,15 @@
-import Container from './components/layout/Container';
-import './styles/App.css';
-import './components/layout/Footer';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import Main from './pages/Main';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <Container>
-      container
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
