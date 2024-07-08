@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './styles/App.css';
 import Container from './components/layout/Container';
+import './styles/App.css';
 import './components/layout/Footer';
 
 function App() {
