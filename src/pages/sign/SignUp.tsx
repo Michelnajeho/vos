@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Container from '../../components/layout/Container';
 
 const SignUp = () => {
+
+  const location = useLocation();
+  const agreeInfo = { ...location.state };
+  console.log(agreeInfo);
+  // if agreeInfo null erre message alert and redirect agree page
 
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
@@ -26,6 +31,7 @@ const SignUp = () => {
     console.log('id:', id);
     console.log('password:', password);
 
+    // set user data and redirect login page
     navigate("/sign-in", {
       replace : false,
       state: {
