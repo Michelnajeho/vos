@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
+import * as validation from '../../utils/validation';
 import Container from '../../components/layout/Container';
 
 const SignUp = () => {
 
+  const navigate = useNavigate();
   const location = useLocation();
-  const agreeInfo = { ...location.state };
-  console.log(agreeInfo);
-  // if agreeInfo null erre message alert and redirect agree page
+  const [membershipAgreeData] = useState(location.state || {});
 
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const navigate = useNavigate();
+  /**
+   * Go to the Terms and Conditions of Use page when accessing the page without proceeding with the terms and conditions of use
+   */
+  useEffect(() => {
+    if (validation.isEmpty(membershipAgreeData["contract"]) && membershipAgreeData["contract"] !== true) {
+      console.log("Navigate to membership-agree page");
+      navigate("/membership-agree", { replace: false });
+    }
+  }, [membershipAgreeData, navigate]);
+
+  // if agreeInfo null erre message alert and redirect agree page
+
 
   const idInputOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setId(event.target.value);
